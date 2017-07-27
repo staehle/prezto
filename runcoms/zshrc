@@ -11,4 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-prompt skwp
+prompt staehle
+
+setopt NO_FLOW_CONTROL
+setopt NUMERIC_GLOB_SORT
+setopt EXTENDED_GLOB
+
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
