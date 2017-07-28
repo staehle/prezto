@@ -1,3 +1,16 @@
 *.zwc
 *.zwc.old
 modules/*/cache.zsh
+*~
+*#
+*.bak
+*.orig
+*.rej
+.DS_Store
+.project
+.cproject
+.settings
+/.config
+/.config.old
+Thumbs.db
+
