@@ -91,7 +91,7 @@ function prompt_staehle_setup {
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   # Define prompts.
-  PROMPT='${_staehle_colors[2]}%n%f@${_staehle_colors[5]}%m%f %B${_staehle_colors[1]}${_prompt_staehle_pwd}%f%b${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  PROMPT='${_staehle_colors[2]}%n%f@${_staehle_colors[3]}%m%f %B${_staehle_colors[1]}${_prompt_staehle_pwd}%f%b${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   RPROMPT='${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
   SPROMPT='zsh: correct ${_staehle_colors[4]}%R%f to ${_staehle_colors[5]}%r%f [nyae]? '
 }
