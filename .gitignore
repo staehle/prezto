@@ -13,4 +13,4 @@ modules/*/cache.zsh
 /.config
 /.config.old
 Thumbs.db
-
+contrib
