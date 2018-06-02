@@ -19,3 +19,8 @@ setopt EXTENDED_GLOB
 
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
+
+# Machine-local configuration
+if [ -f "${HOME}/.zshlocal" ]; then
+  source "${HOME}/.zshlocal"
+fi
