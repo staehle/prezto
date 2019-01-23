@@ -26,11 +26,6 @@ function prompt_staehle_precmd {
   if (( $+functions[git-info] )); then
     git-info
   fi
-
-  # Get ruby information
-  if (( $+functions[ruby-info] )); then
-    ruby-info
-  fi
 }
 
 function prompt_staehle_setup {

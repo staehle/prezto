@@ -20,6 +20,11 @@ setopt EXTENDED_GLOB
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
+# gitk is family-friendly fun
+alias gka='gitk --all &'
+# often fudge this
+alias gti='git'
+
 # Machine-local configuration
 if [ -f "${HOME}/.zshlocal" ]; then
   source "${HOME}/.zshlocal"
