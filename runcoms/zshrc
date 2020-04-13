@@ -25,36 +25,6 @@ alias gka='gitk --all &'
 # often fudge this
 alias gti='git'
 
-# Git merge-up
-function git-mergeup {
-	if [[ -z "$1" ]]; then
-		print "usage: $0 branch-to-merge-up" >&2
-		return 1
-	fi
-	if ! command git rev-parse 2> /dev/null; then
-		print "$0: not a git repository: $PWD" >&2
-		return 1
-	fi
-	local mergeupbranch=$1
-	local ref="$(command git symbolic-ref HEAD 2> /dev/null)"
-	if [[ -n "$ref" ]]; then
-		local currentbranch="${ref#refs/heads/}"
-		print "Currently in branch ${currentbranch}, merging ${mergeupbranch} to us"
-		set -ex
-		git checkout ${mergeupbranch}
-		git pull
-		git merge ${currentbranch}
-		git push
-		git checkout ${currentbranch}
-		set +ex
-		print "OK!"
-		return 0
-	else
-		print "Not in a usable branch/ref" >&2
-		return 1
-	fi
-}
-
 # Machine-local configuration
 if [ -f "${HOME}/.zshlocal" ]; then
   source "${HOME}/.zshlocal"
