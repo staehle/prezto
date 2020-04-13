@@ -25,6 +25,41 @@ alias gka='gitk --all &'
 # often fudge this
 alias gti='git'
 
+# TMUX remote display X forwarding fix
+zshrc_restore_x11_vars()
+{
+  if [[ -z $TMUX ]]
+  then
+    return 0
+  fi
+
+  local tmux_env="$(tmux show-environment)"
+
+  for var_line in ${(f)tmux_env}
+  do
+    if [[ $var_line == -[A-Za-z_]* ]]
+    then
+      local var=${var_line#-}
+      unset $var
+
+    elif [[ $var_line == [A-Za-z_]*'='* ]]
+    then
+      export $var_line
+
+    fi
+  done
+}
+
+precmd()
+{
+  zshrc_restore_x11_vars
+}
+
+preexec()
+{
+  zshrc_restore_x11_vars
+}
+
 # Machine-local configuration
 if [ -f "${HOME}/.zshlocal" ]; then
   source "${HOME}/.zshlocal"
