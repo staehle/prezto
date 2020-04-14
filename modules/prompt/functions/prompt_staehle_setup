@@ -129,6 +129,7 @@ function prompt_staehle_setup {
     C_BLUE="%F{69}"  # Blue
     C_RED="%F{196}"  # Red
     C_GREY="%F{244}" # Mid-Gray
+    C_GREN="%F{34}"  # Green
 
   else
     C_TURQ="%F{cyan}"
@@ -139,6 +140,7 @@ function prompt_staehle_setup {
     C_BLUE="%F{blue}"
     C_RED="%F{red}"
     C_GREY=""
+    C_GREN="%F{green}"
   fi
   C_RESET="%f"
 
@@ -184,12 +186,24 @@ function prompt_staehle_setup {
   _cur_git_root=''
   _prompt_git=''
 
+  # Different machine colors
+  machcf=${HOME}/.zshcolor
+  if [ ! -e $machcf ]; then
+	  machc=$(printf "%02d\n" $[RANDOM%210+20])
+	  echo $machc > $machcf
+	  print -P "%F{$machc}New Machine, '${machc}' is our new color!%f"
+  else
+	  machc=$(cat $machcf)
+	  #print -P "%F{$machc}'${machc}' is our existing color!%f"
+  fi
+
   # Define prompts.
-  _userdisp="${C_ORNG}%n"
+  _userdisp="${C_GREN}%n"
+  [ $USER = "jstaehle" ] && _userdisp="${C_ORNG}%n"
   [ $UID -eq 0 ] && _userdisp="${C_RED}[[ ROOT ]]"
 
   PROMPT='${_userdisp}'                             # 'username'
-  PROMPT+=' ${C_GREY}%m${C_RESET} '        # '@machine '
+  PROMPT+=' %F{$machc}%m${C_RESET} '                # '@machine '
   PROMPT+='%B${C_TURQ}${_prompt_pwd}%f%b '          # '~/f/path'
   PROMPT+='${_show_return}${editor_info[keymap]} '  # '❯' or '#' prompt, colored
 
