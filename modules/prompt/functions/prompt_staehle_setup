@@ -207,7 +207,7 @@ function prompt_staehle_setup {
   PROMPT+='%B${C_TURQ}${_prompt_pwd}%f%b '          # '~/f/path'
   PROMPT+='${_show_return}${editor_info[keymap]} '  # '❯' or '#' prompt, colored
 
-  RPROMPT='$python_info[virtualenv]${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${_prompt_git}'
+  RPROMPT='$python_info[virtualenv]${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${_prompt_git} '
 
   SPROMPT="zsh: correct ${C_PINK}%R%f to ${C_LIME}%r%f [nyae]? "
 }
