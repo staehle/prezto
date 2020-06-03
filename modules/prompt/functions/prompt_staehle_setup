@@ -199,7 +199,7 @@ function prompt_staehle_setup {
 
   # Define prompts.
   _userdisp="${C_GREN}%n"
-  [ $USER = "jstaehle" ] && _userdisp="${C_ORNG}%n"
+  [[ $USER == "jstaehle" || $USER == "jrs" ]] && _userdisp="${C_ORNG}%n"
   [ $UID -eq 0 ] && _userdisp="${C_RED}[[ ROOT ]]"
 
   PROMPT='${_userdisp}'                             # 'username'
